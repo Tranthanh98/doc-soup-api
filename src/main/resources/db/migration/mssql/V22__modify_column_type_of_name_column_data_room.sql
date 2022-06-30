@@ -1,0 +1,3 @@
+ALTER TABLE data_room
+ALTER COLUMN name nvarchar(255) NOT NULL
+GO

@@ -1,0 +1,20 @@
+services:
+  mssql-server:
+    image: 'mcr.microsoft.com/mssql/server:2019-latest'
+    container_name: 'mssql-server'
+    volumes:
+            - ./.docker/mssql/data/:/var/opt/mssql/data
+            - ./.docker/mssql/secrets/:/var/opt/mssql/secrets
+            - ./.docker/mssql/logs/:/var/opt/mssql/log
+    ports:
+      - 1433:1433
+      
+    environment:
+      ACCEPT_EULA: "1"
+      MSSQL_SA_PASSWORD: "yourStrong(!)Password"
+    networks:
+      - network
+networks:
+  # Declare our private network.  We must declare one for the magic
+  # Docker DNS to work, but otherwise its default settings are fine.
+  network: {}

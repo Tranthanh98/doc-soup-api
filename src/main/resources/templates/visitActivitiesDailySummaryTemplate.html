@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<style>
+  .container {
+    font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+    max-width: 100%;
+    padding: 29px 23px 40px 23px;
+    background-color: #f3f4f8;
+    font-size: 13px;
+    color: #1e1e1e;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    text-align: center;
+  }
+
+  .container--text-center {
+    text-align: center;
+  }
+
+  .container__logo-wrapper {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .container__body {
+    width: 420px;
+    height: auto;
+    margin: auto;
+    padding: 30px 30px 20px 30px;
+    background-color: #fff;
+  }
+
+  .container__body__divider {
+    min-width: 420px;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #dadada;
+  }
+
+  .container__body__title {
+    margin: 0px 0 15px 0;
+    color: #1e1e1e !important;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+  }
+
+  .container__body__text {
+    font-size: 13px;
+    color: #6c6c6c !important;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .container__body__report {
+    margin: 30px 0;
+  }
+  .container__body__report div{
+    display: inline-block;
+    width: 49.85%; 
+    text-align: center;
+    padding: 10px 0;
+  }
+  .container__body__report p{
+    color: #ff6100 !important;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1;
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+  .container__body__report span {
+    font-weight: 400;
+  }
+
+  .container__body__table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .container__body__table thead {
+    width: 420px;
+    height: 32px;
+    font-size: 12px;
+    color: #6c6c6c !important;
+    text-align: left;
+    border-bottom: 1px solid #dadada;
+  }
+
+  .container__body__table th{
+    font-weight: 500;
+  }
+  .container__body__table tbody tr{
+    padding: 6px 8px;
+    height: 44px;
+  }
+  .container__body__table td{
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .container__body__table .personal-coin {
+    display: inline-block;
+    width: 32px;
+    max-height: 32px;
+    margin: 0 8px 0 0;
+    padding: 3px 0;
+    border-radius: 8px;
+    background-color: #0cbc82;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.63;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+
+  .container__copyright {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #6c6c6c !important;
+  }
+
+</style>
+
+<body style="margin: 0">
+  <div class="container">
+    <div class="container__logo-wrapper">
+      <img id="logo" src="https://release-release1-0.da0ls7damv3qc.amplifyapp.com/img/logo2x-black.png" alt="Logo" width="114" height="30"
+        style="object-fit: cover;" />
+    </div>
+    <div class="container__body">
+        <p class="container__body__title">
+          Hi @ownerFullName!
+        </p>
+        <p class="container__body__text">
+          We are forwarding your daily activity report.
+        </p>
+        <div class="container__body__report">
+          <div>
+            <span class="container__body__text">Nomber of Visits :</span>
+            <p>@numberOfVisit</p>
+          </div>
+          <div style="float: right; border-left: 1px solid #dadada;">
+            <span class="container__body__text">Average % Completion :</span>
+            <p>@averageCompletion%</p>
+          </div>
+        </div>
+        <span style="font-size: 16px; font-weight: 500;">Visit Recap</span>
+        <p class="container__body__text" style="margin: 12px 0 20px 0;">This is the most frequently visited summary statistics since yesterday.</p>
+        <table aria-describedby="table" class="container__body__table">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 117px; padding-left: 8px;">Visitor</th>
+              <th scope="col" style="max-width: 137px;">Content</th>
+              <th scope="col" style="width: 87px; text-align:right;">Completion</th>
+              <th scope="col" style="min-width: 71px; text-align:right; padding-right: 24px;">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+			@viewerListString
+          </tbody>
+        </table>
+      </div>
+    <p class="container__copyright">Copyright &copy; DocSoup 2021, All right reserved.</p>
+  </div>
+</body>
+
+</html>

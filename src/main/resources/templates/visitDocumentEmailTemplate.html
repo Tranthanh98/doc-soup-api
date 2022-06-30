@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<style>
+  .container {
+    font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+    max-width: 100%;
+    padding: 23px 23px 40px 23px;
+    background-color: #f3f4f8;
+    font-size: 14px;
+    color: #6c6c6c;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+  }
+
+  .container--text-center {
+    text-align: center;
+  }
+
+  .container__logo-wrapper {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .container__body {
+    width: 420px;
+    height: auto;
+    margin: auto;
+    padding: 30px 30px 20px 30px;
+    background-color: #fff;
+  }
+
+  .container__body__divider {
+    min-width: 420px;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #dadada;
+  }
+
+  .container__body__title {
+    margin: 4px 0 16px 0;
+    line-height: 20px;
+    color: #1e1e1e;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .container__body__text {
+    font-size: 13px;
+    color: #6c6c6c;
+  }
+
+  .container__body__text--small {
+    font-size: 12px;
+  }
+
+  .container__body__personal {
+    text-align: left;
+    padding: 30px 8px ;
+  }
+
+  .container__body__personal__coin {
+    min-width: 48px;
+    width: 48px;
+    height: 42px;
+    margin: 0 12px 0 0;
+    padding-top: 6px;
+    padding-bottom: 0px;
+    border-radius: 14px;
+    background-color: #0cbc82;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .container__body__personal__name {
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    color: #1e1e1e;
+  }
+
+  .container__body__personal__name a {
+    color: #1e1e1e !important;
+    text-decoration: unset !important;
+  }
+
+  .container__body__link {
+    font-size: 12px;
+    color: #ff6100 !important;
+    text-decoration: none;
+  }
+
+  .container__body__link a {
+    font-size: 12px;
+    color: #ff6100 !important;
+    text-decoration: none;
+  }
+
+  .container__body__link:hover {
+    color: #e09119;
+    text-decoration: underline;
+  }
+
+  .container__body__button {
+    display: inline-block;
+    width: 228px;
+    padding: 14px 16px;
+    border-radius: 2px;
+    background-color: #f79f1a;
+    border-radius: 2px;
+    text-decoration: none;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .container__body__button:hover {
+    background-color: #df8f18;
+  }
+
+  .container__copyright {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .container__body__document-link-row {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 12px;
+  }
+
+  .container__body__page-number {
+    font-size: 12px;
+    text-align: right;
+    float: right;
+    color: #6c6c6c;
+  }
+
+  .container__body__duration-text {
+    float: right; 
+    color:#1e1e1e; 
+    font-size: 16px; 
+    padding: 3px 0;
+  }
+</style>
+
+<body style="margin: 0">
+  <div class="container">
+    <div class="container__logo-wrapper">
+      <img id="logo" src="@logoImage" alt="Logo" width="114" height="30"
+        style="object-fit: cover;" />
+    </div>
+    <div class="container__body">
+        <p class="container__body__title container--text-center">
+          Hi @linkCreatorName!
+        </p>
+        <p class="container__body__text container--text-center">
+          We have a new visitor. Check out the summary quickly!
+        </p>
+        <table style="padding: 20px 0 18px 0;">
+          <tr class="container__body__personal">
+            <td>
+              <div class="container__body__personal__coin">@contactNameCharacter</div>
+            </td>
+            <td style="min-width: 340px;">
+              <span class="container__body__personal__name">@contactName</span>
+              <div style="margin-top: 4px;">
+                <span class="container__body__link" style="display:inline-block;">@contactEmail</span>
+                <span class="container__body__text--small" style="float: right; color: #6c6c6c;">@locationWithDevice</span>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="container__body__divider"></div>
+        <div class="container__body__text" style="margin: 16px 0 10px 8px; font-weight: 400;">
+          VIEWED
+        </div>
+        <table>
+          <tr>
+            <td>
+              <img id="file-thumbnail" src="@pdfImage"
+                alt="file-thumbnail" width="48" height="48" style="object-fit: contain;" />
+            </td>
+            <td style="width: 60%; padding: 6px 0 8px 12px;">
+              <span class="container__body__personal__name" style="display:block; font-size: 14px; margin: 0 0 4px 0; padding-right: 60px;">@fileName</span>
+              <span class="container__body__text container__body__text--small">
+                <img id="hyperlink" src="@hyperLinkUrl"
+                  alt="hyperlink" width="16" height="12" style="object-fit: cover;" />
+                <span style="margin-left: 2px;">@accountName</span>
+              </span>
+            </td>
+            <td style="width: 30%; padding-right: 12px; text-align: right;">
+              <span>
+                <img style="margin-right: 12px;" src="@circleChartUrl" />
+              </span>
+                <span class="container__body__duration-text">@duration</span>
+            </td>
+          </tr>
+        </table>
+        <div class="container--text-center" style="margin-top: 23px">
+          <a href="@viewAllStatsLink" class="container__body__button">View all stats</a>
+        </div>
+<!--        <p class="container__body__text" style="color: #1e1e1e; margin-top: 37px; margin-bottom: 6px;">IN-DOCUMENT LINK CLICKS</p>-->
+<!--        @documentActivity-->
+        </div>
+        <p class="container__copyright" style="color: #6c6c6c;">Copyright &copy; DocSoup 2021, All right reserved.</p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+    - echo In the pre_build phase...
+    - mkdir build-output
+    - cp -r src build-output
+    - cp Dockerfile build-output
+    - cp docker-compose.yml build-output
+    - cp pom.xml build-output
+    - cp app_stop.sh build-output
+    - cp basic_health_check.sh build-output
+    - cp install_di.sh build-output
+    - cp appspec.yml build-output
+    - cp execute_commands_on_ec2.sh build-output
+    - cd build-output/
+    - zip -qr build-output.zip ./*
+    - mv build-output.zip ../
+    - echo Build completed on `date`
+   
+  build:
+    commands:
+    - echo Build started on `date`
+    - mvn clean compile    
+  post_build:
+    commands:
+    - echo Build completed on `date`
+    - mvn package
+    - mv target/api-0.0.1-SNAPSHOT.jar api-0.0.1-SNAPSHOT.jar
+
+artifacts:
+  artifacts:
+  files:
+    - build-output.zip
+    - appspec.yml
+    - app_stop.sh
+    - execute_commands_on_ec2.sh
+    - install_di.sh
+    - basic_health_check.sh
+        
+  

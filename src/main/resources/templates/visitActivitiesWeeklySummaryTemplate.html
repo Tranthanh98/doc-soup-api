@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<style>
+  .container {
+    font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+    max-width: 100%;
+    padding: 29px 23px 40px 23px;
+    background-color: #f3f4f8;
+    font-size: 13px;
+    color: #1e1e1e;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    text-align: center;
+  }
+
+  .container--text-center {
+    text-align: center;
+  }
+
+  .container__logo-wrapper {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .container__body {
+    width: 420px;
+    height: auto;
+    margin: auto;
+    padding: 28px 30px 20px 30px;
+    background-color: #fff;
+  }
+
+  .container__body__divider {
+    min-width: 420px;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #dadada;
+  }
+
+  .container__body__title {
+    margin: 0px 0 20px 0;
+    line-height: 20px;
+    color: #1e1e1e !important;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .container__body__section-title {
+    margin: 0px 0 15px 0;
+    color: #1e1e1e !important;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .container__body__text {
+    font-size: 13px;
+    color: #6c6c6c !important;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .container__body__table-activity {
+    border-collapse: collapse;
+    width: auto; 
+    text-align: left;
+  }
+  .container__body__table-activity th{
+    font-size: 13px;
+    font-weight: 500;
+    color: #6c6c6c !important;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    vertical-align: top;
+  }
+  .container__body__table-activity th small {
+    font-size: 12px !important;
+    font-weight: 300;
+    line-height: 22px;
+  }
+  .container__body__table-activity .highlight-text{
+    width: 30px;
+    color: #ff6100 !important;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    padding-right: 6px;
+  }
+
+  .container__body__table-activity.team tbody tr td {
+    padding: 5px 0;
+  }
+  .container__body__table-activity.team .bar-chart{
+    width: 160px;
+  }
+  .container__body__table-activity.team .bar-chart-thumb{
+    height: 4px;
+    background-color: #ff6100;
+    float: left;
+  }
+  .container__body__table-activity.team .bar-chart-track{
+    width: 100%;
+    height: 4px;
+    background-color: #dadada;
+    float: right;
+  }
+
+  .container__body__table-activity.team-content {
+    width: 100%;
+  }
+  .container__body__table-activity.team-content p{
+    font-size: 12px;
+    color: #1e1e1e !important;
+    margin: 0 0 30px 0;
+  }
+  .container__body__table-activity.team-content tr td {
+    height: 44px;
+  }
+
+  .container__body__table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .container__body__table thead {
+    width: 420px;
+    height: 32px;
+    font-size: 12px;
+    color: #6c6c6c !important;
+    text-align: left;
+    border-bottom: 1px solid #dadada;
+  }
+
+  .container__body__table th{
+    font-weight: 500;
+    text-align: center;
+  }
+  .container__body__table tbody tr{
+    padding: 6px 8px;
+    height: 44px;
+  }
+  .container__body__table td{
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .container__body__table-activity .personal-coin, 
+  .container__body__table .personal-coin {
+    display: inline-block;
+    width: 32px;
+    max-height: 32px;
+    margin: 0 8px 0 0;
+    padding: 3px 0;
+    border-radius: 8px;
+    background-color: #0cbc82;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.63;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+  }
+  .container__body__table-activity .personal-coin {
+    margin: 0 0 0 8px !important;
+  }
+  .container__body__table-activity .new-tab {
+    display: inline-block;
+    max-width: 41px;
+    max-height: 20px;
+    margin: 0 6px 0 8px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: solid 1.2px #f79f1a;
+    background-color: #fff8ed;
+    font-size: 12px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    color: #ff6100;
+  }
+
+  .container__copyright {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #6c6c6c !important;
+  }
+
+</style>
+
+<body style="margin: 0">
+  <div class="container">
+    <div class="container__logo-wrapper">
+      <img id="logo" src="https://release-release1-0.da0ls7damv3qc.amplifyapp.com/img/logo2x-black.png" alt="Logo" width="114" height="30"
+        style="object-fit: cover;" />
+    </div>
+    <div class="container__body">
+        <p class="container__body__title">
+          Hi @fullName!
+        </p>
+        <p class="container__body__text">
+          We are forwarding your weekly activity report.<br/>
+          Here's a summary of what your team did.
+        </p>
+        <div class="container__body__divider" style="margin: 30px 0;"></div>
+        <p class="container__body__section-title">Team Activity This Week</p>
+        <table class="container__body__table-activity team" aria-describedby="table-week-activity" style="margin: 0 10px 35px 10px;">
+          <thead>
+            <tr>
+              <th colspan="2" scope="col" style="width: 210px;">Links created per day (relative %)</th>
+              <th colspan="2" scope="col" style="width: 190px;">Visits per day (relative %)</th>
+            </tr>
+          </thead>
+          <tbody>
+				@teamActivity
+          </tbody>
+        </table>
+        <p class="container__body__section-title">Teammate Activity</p>
+        <p class="container__body__text" style="margin: 12px 0 20px 0;">
+          You can check the summary of the activity plan team <br/>
+          members most actively last week.
+        </p>
+        <table aria-describedby="table" class="container__body__table" style="margin-bottom: 40px;">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 119px; text-align: left;">Teammate</th>
+              <th scope="col">Links</th>
+              <th scope="col">Data Rooms</th>
+              <th scope="col">Room Links</th>
+              <th scope="col">Visits</th>
+            </tr>
+          </thead>
+          <tbody>
+			@teammateActivity
+          </tbody>
+        </table>
+        <p class="container__body__section-title">Team Content Activity This Week</p>
+        <table class="container__body__table-activity team-content" aria-describedby="table-team-content-activity">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 210px;">
+                Most-used content (relative %) <br/>
+                <small>Based on link created.</small>
+              </th>
+              <th scope="col" style="width: 190px;">
+                Most-visited content (relative %)
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <span class="highlight-text">@topCreatedLinksFilePercent</span><span>@topCreatedLinksFileName</span>
+                </p>
+              </td>
+              <td>
+                <p>
+                  <span class="highlight-text">@topVisitFilePercent</span><span>@topVisitFileName</span>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="col" style="width: 210px;">
+                Most-used Data Rooms (relative %) <br />
+                <small>Based on Room link created.</small>
+              </th>
+              <th scope="col" style="width: 190px;"></th>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <span class="highlight-text">@topCreatedLinksDataroomPercent</span><span>@topCreatedLinksDataroomName</span>
+                </p>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th colspan="2" scope="col" style="padding-bottom: 7px;">
+                Content updates
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+			@latestFileTemplate
+          </tbody>
+        </table>
+      </div>
+    <p class="container__copyright">Copyright &copy; DocSoup 2022, All right reserved.</p>
+  </div>
+</body>
+
+</html>

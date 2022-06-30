@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<style>
+    .email-container {
+        font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+        background: #f3f4f8;
+        width: 100%;
+        letter-spacing: -0.5px;
+        font-weight: 300;
+    }
+
+    .center-box-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .take-owner-button {
+        display: inline-block;
+		width: 228px;
+		padding: 14px 16px;
+		border-radius: 2px;
+		background-color: #f79f1a;
+		border-radius: 2px;
+		text-decoration: none;
+		color: #ffffff !important;
+		font-size: 16px;
+		font-weight: 500;
+		cursor: pointer;
+		text-align: center;
+    }
+
+    .divider {
+        min-width: 420px;
+        height: 1px;
+        opacity: 0.5;
+        background-color: #dadada;
+    }
+
+</style>
+<body style="margin: 0">
+<div class="email-container">
+    <div style="padding-top: 29px; text-align: center; margin-bottom: 16px">
+        <img width="114" height="30" style="margin: auto;" src="@logoImage" alt="logoImage"/>
+    </div>
+
+    <div class="center-box-container" >
+        <div style="width: 420px; height: 450px; padding: 30px 30px 20px 30px; margin: auto; background: #ffff; text-align: center;">
+            <div style="margin-bottom: 30px; text-align: center;">
+                <img style="width: 123; height: 180px; object-fit: contain" src="@emailImage" alt="emailImage" />
+            </div>
+
+            <h3 style="font-size: 20px; line-height: 30px;">You have been designated as
+            the owner of @companyName</h3>
+
+            <p style="font-size: 13px; color: #6c6c6c; line-height: 20px; padding: 0 30px;">
+                @senderName has designated you as the account and billing owner of
+                @companyName. You can use DocSoup for ownership by clicking
+                the button below.
+            </p>
+            <div class="divider"></div>
+            <div style="margin-top: 30px;" >
+                <a href="@inviteLink" class="take-owner-button">Take Ownership</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; padding-bottom: 40px;">
+        <p style="color: #6c6c6c; font-size: 12px;">
+            Copyright &copy; DocSoup 2021, All right reserved.
+        </p>
+    </div>
+</div>
+</body>
+</html>

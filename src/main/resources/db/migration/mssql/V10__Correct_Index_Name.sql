@@ -1,0 +1,3 @@
+EXEC sp_rename N'dbo.directory_entity.DIRECTORY_ENTITY_ACCOUNT', N'IX_DIRECTORY_ENTITY_ACCOUNTID', N'INDEX';
+GO
+

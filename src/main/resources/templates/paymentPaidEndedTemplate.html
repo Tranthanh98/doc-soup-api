@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+	</head>
+
+	<style>
+		body {
+			font-family: 'Noto Sans KR', sans-serif;
+			letter-spacing: -0.5px;
+		}
+
+		.email-container {
+			background: #f3f4f8;
+			width: 100%;
+		}
+
+		.center-box-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.title {
+			font-size: 20px;
+			font-weight: 700;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 1;
+			letter-spacing: -0.5px;
+			text-align: start;
+			color: #1e1e1e;
+		}
+
+		.text {
+			font-size: 13px;
+			font-weight: normal;
+			font-stretch: normal;
+			line-height: normal;
+			font-style: normal;
+			letter-spacing: -0.5px;
+			text-align: center;
+			color: #6c6c6c;
+		}
+
+		.underline-mention {
+			font-size: 13px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: -0.5px;
+			color: #ff6100 !important;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
+		.underline-mention a {
+			color: #ff6100 !important;
+		}
+
+		.center-box-container {
+        width: 100%;
+			height: 100%;
+		}
+
+		.upgrade-payment {
+			color: #ffff !important;
+			height: 44px;
+			width: 260px;
+			border-radius: 2px;
+  			background-color: #f79f1a !important;
+			margin: auto;
+			font-weight: 500;
+			text-decoration: unset;
+			padding: 14px 18px;
+			font-size: 16px;
+		}
+
+	</style>
+<body style="margin: 0">
+	<div class="email-container">
+		<div style="padding-top: 23px; text-align: center; margin-bottom: 20px">
+			<img style="margin: auto;" src="@logoImage" alt="logoImage"/>
+		</div>
+
+		<div class="center-box-container" >
+			<div style="width: 420px; padding: 30px 30px; margin: auto; background: #ffff; text-align: start;">
+				<div>
+					<span class="title">DocSoup payment grace period has expired. </span>
+				</div>
+
+				<div style="padding-top: 13px;">
+						<span class="text">
+						Hi @ownerName,
+					  </span>				
+				</div>
+
+				<div style="padding-top: 13px;">
+					<span class="text" >
+						Due to the expiration of the DocSoup payment grace period, your account has been downgraded to a limited trial version and links to data rooms and premium features have been disabled.
+					  </span>
+				</div>
+
+				<div style="margin-top: 15px">
+					<span class="text">
+						If you want to continue using DocSoup @planName or change your plan to another one, you can upgrade your account from the
+					  </span>
+					<a class="underline-mention" href="@paymentPage" >payment page</a>
+					<span class="text">
+						at any time. 
+					  </span>
+				</div>
+
+				<div style="margin-top: 30px; text-align: center;" class="center-box-container" >
+					<a href="@paymentPage" class="center-box-container upgrade-payment">Upgrade to DocSoup @planName</a>
+				</div>
+
+				<div style="margin-top: 33px;">
+					<span class="text">
+						If you have any questions, please email me.
+					  </span>
+				</div>
+			</div>
+		</div>
+
+		<div style="text-align: center; margin-top: 20px; padding-bottom: 20px;">
+			<span style="color: #6c6c6c; font-size: 12px;">
+				Copyright &copy; DocSoup 2021, All right reserved.
+			</span>
+		</div>
+	</div>
+</body>
+</html>

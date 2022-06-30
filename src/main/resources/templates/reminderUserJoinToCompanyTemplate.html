@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<style>
+  .container {
+    font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+    max-width: 100%;
+    padding: 23px 23px 40px 23px;
+    background-color: #f3f4f8;
+    font-size: 13px;
+    color: #1e1e1e;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+  }
+
+  .container--text-center {
+    text-align: center;
+  }
+
+  .container__logo-wrapper {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .container__body {
+    width: 420px;
+    height: auto;
+    margin: auto;
+    padding: 25px 30px 20px 30px;
+    background-color: #fff;
+  }
+
+  .container__body__divider {
+    min-width: 420px;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #dadada;
+  }
+
+  .container__body__title {
+    margin: 4px 0 20px 0;
+    line-height: 20px;
+    color: #1e1e1e !important;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+  }
+
+  .container__body__text {
+    font-size: 13px;
+    color: #6c6c6c !important;
+    margin: 0;
+    line-height: 18px;
+  }
+
+  .container__body__button {
+    display: inline-block;
+    width: 260px;
+    padding: 14px 16px;
+    border-radius: 2px;
+    background-color: #f79f1a;
+    border-radius: 2px;
+    text-decoration: none;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+  }
+  .container__body__button:hover {
+    background-color: #df8f18;
+  }
+
+  .container__copyright {
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
+    color: #6c6c6c !important;
+  }
+
+</style>
+
+<body style="margin: 0">
+  <div class="container">
+    <div class="container__logo-wrapper">
+      <img id="logo" src="@logoImage" alt="Logo" width="114" height="30"
+        style="object-fit: cover;" />
+    </div>
+    <div class="container__body">
+        <p class="container__body__title">
+          The DocSoup @companyName team is
+          waiting for you
+        </p>
+        <p class="container__body__text">
+          Make it easy to manage complex documents with DocSoup. Simply create, share, and track documents. You can join the
+          @companyName team by clicking the button below.
+        </p>
+        <div style="margin: 30px 0; text-align: center;">
+          <a href="@inviteLink" class="container__body__button">Accept DocSoup Invite</a>
+        </div>
+        <p class="container__body__text">If you have any questions, please email me.</p>
+      </div>
+    <p class="container__copyright">Copyright &copy; DocSoup 2021, All right reserved.</p>
+  </div>
+</body>
+
+</html>

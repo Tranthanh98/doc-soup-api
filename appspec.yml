@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user
+file_exists_behavior: OVERWRITE
+hooks:
+  ApplicationStart:
+    - location: execute_commands_on_ec2.sh
+      timeout: 900000
+      runas: root
+  ApplicationStop:
+    - location: app_stop.sh
+      timeout: 300
+  BeforeInstall:
+    - location: install_di.sh
+      timeout: 300
+  ValidateService:
+    - location: basic_health_check.sh
+  

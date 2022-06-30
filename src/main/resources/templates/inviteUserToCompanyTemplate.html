@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+	</head>
+
+	<style>
+		.email-container {
+			font-family: 'SourceHanSansKR', 'Noto Sans KR', sans-serif;
+			background: #f3f4f8;
+			min-height: 600px;
+			width: 100%;
+			font-weight: 300;
+			letter-spacing: -0.5px;
+		}
+
+		.email-container-text {
+			font-size: 13px; 
+			color: #6c6c6c !important; 
+			line-height: 20px;
+		}
+
+		.center-box-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.join-team {
+			display: inline-block;
+			width: 260px;
+			padding: 14px 16px;
+			border-radius: 2px;
+			background-color: #f79f1a;
+			border-radius: 2px;
+			text-decoration: none;
+			color: #ffffff !important;
+			font-size: 16px;
+			font-weight: 500;
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.divider {
+    min-width: 420px;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #dadada;
+  }
+
+	</style>
+<body style="margin: 0">
+	<div class="email-container">
+		<div style="padding-top: 40px; text-align: center; margin-bottom: 18px">
+			<img width="114" height="30" style="margin: auto;" src="@logoImage" alt="logoImage"/>
+			
+		</div>
+
+		<div class="center-box-container" >
+			<div style="width: 420px; min-height: 450px; padding: 30px 30px 25px 30px; margin: auto; background: #ffff; text-align: center;">
+				<div style="margin-bottom: 30px; text-align: center;">
+					<img style="width: 124px; height: 180px; object-fit: contain" src="@emailImage" alt="emailImage" />
+				</div>
+
+				<h3 style="font-size: 20px;">Join @companyName on DocSoup</h3>
+
+				<p class="email-container-text">
+					@companyName The team has invited you.
+					<br/>
+					Click on the bottom button to start DocSoup's amazing document experience.
+				</p>
+				<div class="divider"></div>
+				<div style="margin-top: 30px;">
+						<a href="@inviteLink" class="join-team">Join your team on DocSoup</a>
+				</div>
+				<p class="email-container-text" style="margin-top: 30px;">
+					DocSoup makes it easy to manage complex documents, share documents 
+
+					<br/>
+					and track people's responses easily.
+				</p>
+			</div>
+		</div>
+
+		<div style="text-align: center; margin-top: 20px; padding-bottom: 40px;">
+			<p style="color: #6c6c6c; font-size: 12px;">
+				Copyright &copy; DocSoup 2021, All right reserved.
+			</p>
+		</div>
+	</div>
+</body>
+</html>
