@@ -118,7 +118,7 @@ public class FileController extends BaseController {
         return handleWithResponse(DownloadFile.of(id));
     }
 
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> createFile(@Valid @ModelAttribute UploadFileCommand command,
                                         BindingResult bindingResult)
     {

@@ -28,7 +28,7 @@ import java.util.HashMap;
 @RestController
 @AllArgsConstructor
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
- @PreAuthorize("hasRole('public_site')")
+//  @PreAuthorize("hasRole('public_site')")
 public class BaseController {
 
     private final Pipeline pipeline;
