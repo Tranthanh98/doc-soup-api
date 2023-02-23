@@ -21,13 +21,14 @@ public class KeycloakConfig {
      String username = "admin";
 
      @Value("${logixtek.docsoup.api.infrastructure.configurations.keycloak.pass}")
-     String password = "admin";
+     String password = "admin@123";
 
 
 
     @Bean
     @RequestScope
     Keycloak Keycloak () {
+        int a = 1;
         return KeycloakBuilder
                 .builder()
                 .serverUrl(serverUrl)
