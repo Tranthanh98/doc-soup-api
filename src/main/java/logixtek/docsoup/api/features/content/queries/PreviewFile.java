@@ -2,11 +2,12 @@ package logixtek.docsoup.api.features.content.queries;
 
 import logixtek.docsoup.api.infrastructure.commands.BaseIdentityCommand;
 import lombok.Getter;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 
 import javax.validation.constraints.Min;
 
-public class PreviewFile extends BaseIdentityCommand<ResponseEntity<String>> {
+public class PreviewFile extends BaseIdentityCommand<ResponseEntity<InputStreamResource>> {
 
     public PreviewFile(long fileId)
     {

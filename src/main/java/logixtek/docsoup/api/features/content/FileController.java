@@ -48,7 +48,7 @@ public class FileController extends BaseController {
     }
 
     @GetMapping("/{id}/preview")
-    public ResponseEntity<String> previewFile(@PathVariable Long id){
+    public ResponseEntity<?> previewFile(@PathVariable Long id){
         var query = new PreviewFile(id);
         return handleWithResponse(query);
     }
