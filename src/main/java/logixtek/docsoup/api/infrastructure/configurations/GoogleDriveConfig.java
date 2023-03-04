@@ -25,7 +25,7 @@ import java.util.List;
 
 @Configuration
 public class GoogleDriveConfig {
-    private static final String APPLICATION_NAME = "Doc Sharing"; // Application name
+    private static final String APPLICATION_NAME = "doc-share-dev"; // Application name
     private static final JsonFactory JSON_FACTORY = new GsonFactory();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
     /**
@@ -52,7 +52,8 @@ public class GoogleDriveConfig {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    private Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
+            throws IOException {
         // Load client secrets.
         InputStream in = GoogleDriveConfig.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
@@ -66,8 +67,9 @@ public class GoogleDriveConfig {
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
                 .setAccessType("offline")
                 .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8080).build(); // PORT URI OF GOOGLE SERVICE
-        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+        // returns an authorized Credential object.
+        return credential;
     }
-
 }

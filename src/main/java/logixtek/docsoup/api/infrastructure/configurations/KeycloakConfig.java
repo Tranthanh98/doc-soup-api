@@ -18,10 +18,10 @@ public class KeycloakConfig {
     String serverUrl;
 
      @Value("${logixtek.docsoup.api.infrastructure.configurations.keycloak.user}")
-     String username = "admin";
+     String username;
 
      @Value("${logixtek.docsoup.api.infrastructure.configurations.keycloak.pass}")
-     String password = "admin@123";
+     String password;
 
 
 

@@ -34,7 +34,6 @@ import java.util.Optional;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Primary
 public class GoogleDriveService implements DocumentService, DocumentViewService {
-
     private final Drive googleDriveService;
 
     @Value("${google.drive.folder-id}")
@@ -55,8 +54,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
                         .files()
                         .create(fileMetadata, new InputStreamContent(
                                 file.getContentType(),
-                                new ByteArrayInputStream(file.getBytes()))
-                        )
+                                new ByteArrayInputStream(file.getBytes())))
                         .setFields("id").execute();
 
                 var result = new DocumentInfo();
@@ -70,9 +68,10 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
                 return Optional.of(result);
             }
         } catch (Exception e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
@@ -92,8 +91,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
                         .files()
                         .create(fileMetadata, new InputStreamContent(
                                 "application/pdf",
-                                new ByteArrayInputStream(content))
-                        )
+                                new ByteArrayInputStream(content)))
                         .setFields("id").execute();
 
                 var result = new DocumentInfo();
@@ -109,7 +107,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override
@@ -133,17 +131,18 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
     public ResultOf<byte[]> getThumbnail(String docId, Integer pageNumber) throws IOException {
         var document = googleDriveService.files().get(docId)
                 .setFields("thumbnailLink, hasThumbnail")
-                .execute();;
+                .execute();
+        ;
 
-                if(!document.getHasThumbnail()){
-                    return ResultOf.of(false);
-                }
+        if (!document.getHasThumbnail()) {
+            return ResultOf.of(false);
+        }
 
         var thumbnailLink = document.getThumbnailLink();
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
-        var urlBuildr= new StringBuilder();
+        var urlBuildr = new StringBuilder();
         urlBuildr.append(thumbnailLink);
 
         Request request = new Request.Builder()
@@ -152,29 +151,28 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
                 .addHeader("Content-Type", "image/jpeg")
                 .build();
 
-        try(Response response = client.newCall(request).execute()) {
+        try (Response response = client.newCall(request).execute()) {
 
             if (response.code() >= 200 && response.code() <= 299) {
-                var byteResponse = response.body()!=null ?
-                        Objects.requireNonNullElse(response.body(),null).bytes():null;
+                var byteResponse = response.body() != null ? Objects.requireNonNullElse(response.body(), null).bytes()
+                        : null;
 
-                if(byteResponse!=null) {
+                if (byteResponse != null) {
                     return ResultOf.of(byteResponse);
                 }
 
-                return ResultOf.of(false,"GoogleDriveService.getThumbnail was done without bodyOption." );
+                return ResultOf.of(false, "GoogleDriveService.getThumbnail was done without bodyOption.");
 
             } else {
                 logger.error("GoogleDriveService.getThumbnail was failed with http status = " + response.code());
 
                 return ResultOf.of(false, response.message());
             }
-        }catch (Exception ex)
-        {
-            logger.error(ex.getMessage(),ex);
+        } catch (Exception ex) {
+            logger.error(ex.getMessage(), ex);
         }
 
-        return  ResultOf.of(false,"GoogleDriveService.getThumbnail was failed with Unknown exception");
+        return ResultOf.of(false, "GoogleDriveService.getThumbnail was failed with Unknown exception");
 
     }
 
@@ -188,7 +186,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
 
     @Override
     public String getThumbnailLink(String fileId) throws IOException {
-        if(fileId != null){
+        if (fileId != null) {
             return googleDriveService.files().get(fileId).execute().getThumbnailLink();
         }
 
@@ -197,7 +195,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
 
     @Override
     public Optional<DocumentInfo> updateFile(String fileId, MultipartFile multipartFile) {
-        try{
+        try {
             // First retrieve the file from the API.
             File file = googleDriveService.files().get(fileId).execute();
 
@@ -220,8 +218,7 @@ public class GoogleDriveService implements DocumentService, DocumentViewService 
             result.setAlink("gg drive system");
 
             return Optional.of(result);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return Optional.empty();
         }

@@ -28,7 +28,7 @@ import java.util.HashMap;
 @RestController
 @AllArgsConstructor
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//  @PreAuthorize("hasRole('public_site')")
+@PreAuthorize("hasRole('public_site')")
 public class BaseController {
 
     private final Pipeline pipeline;
@@ -48,11 +48,10 @@ public class BaseController {
         return token.getClaim("sub");
     }
 
-    protected AccountEntity getAccountFromToken()
-    {
+    protected AccountEntity getAccountFromToken() {
         var token = (Jwt) this.authenticationManager.getAuthentication().getPrincipal();
 
-       var entity = new AccountEntity();
+        var entity = new AccountEntity();
 
         entity.setId(token.getClaim("sub"));
         entity.setEmail(token.getClaim("email"));
@@ -62,32 +61,25 @@ public class BaseController {
         return entity;
     }
 
-    protected AccountEntity getAccountInfo()
-    {
-       var accountId = getAccountId();
+    protected AccountEntity getAccountInfo() {
+        var accountId = getAccountId();
 
-       var account= accountService.get(accountId);
-       if(account!=null)
-       {
-           return account;
-       }
+        var account = accountService.get(accountId);
+        if (account != null) {
+            return account;
+        }
 
-       return  getAccountFromToken();
+        return getAccountFromToken();
     }
 
     protected <T> ResponseEntity<T> handle(Command<T> command) {
-        try
-        {
-            if(command instanceof BaseIdentityCommand<?>)
-            {
+        try {
+            if (command instanceof BaseIdentityCommand<?>) {
                 var account = getAccountInfo();
 
-                if (
-                        Boolean.TRUE.equals(
-                                !isActiveUser( account, command instanceof IRequiredUserValidationCommand
-                                        && ((IRequiredUserValidationCommand)command).isRequire())
-                        )
-                ) {
+                if (Boolean.TRUE.equals(
+                        !isActiveUser(account, command instanceof IRequiredUserValidationCommand
+                                && ((IRequiredUserValidationCommand) command).isRequire()))) {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
                 }
 
@@ -117,7 +109,7 @@ public class BaseController {
     }
 
     protected <T> ResponseEntity<?> handleWithResponseMessage(Command<ResponseMessageOf<T>> command,
-                                                       BindingResult bindingResult) {
+            BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return handleBadRequest(bindingResult);
@@ -130,18 +122,13 @@ public class BaseController {
     protected <T> ResponseEntity<?> handleWithResponseMessage(Command<ResponseMessageOf<T>> command) {
         try {
 
-            if(command instanceof BaseIdentityCommand<?>)
-            {
+            if (command instanceof BaseIdentityCommand<?>) {
                 var account = getAccountInfo();
 
-                if (
-                        Boolean.TRUE.equals(
-                                !isActiveUser(
-                                        account, command instanceof IRequiredUserValidationCommand
-                                        && ((IRequiredUserValidationCommand)command).isRequire()
-                                )
-                        )
-                ) {
+                if (Boolean.TRUE.equals(
+                        !isActiveUser(
+                                account, command instanceof IRequiredUserValidationCommand
+                                        && ((IRequiredUserValidationCommand) command).isRequire()))) {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
                 }
 
@@ -149,17 +136,16 @@ public class BaseController {
                 ((BaseIdentityCommand<ResponseMessageOf<T>>) command).setCompanyId(account.getActiveCompanyId());
             }
 
-            var message= command.execute(pipeline);
+            var message = command.execute(pipeline);
 
-            if(message.getSucceeded())
-            {
+            if (message.getSucceeded()) {
                 return ResponseEntity.status(message.getStatus()).body(message.getData());
 
             }
 
             return ResponseEntity
                     .status(message.getStatus())
-                    .body(new ResponseMessageOf<T>(message.getMessage() , message.getFieldErrors()));
+                    .body(new ResponseMessageOf<T>(message.getMessage(), message.getFieldErrors()));
 
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
@@ -183,18 +169,13 @@ public class BaseController {
     protected <T> ResponseEntity<T> handleWithResponse(Command<ResponseEntity<T>> command) {
         try {
 
-            if(command instanceof BaseIdentityCommand<?>)
-            {
+            if (command instanceof BaseIdentityCommand<?>) {
                 var account = getAccountInfo();
 
-                if (
-                        Boolean.TRUE.equals(
-                            !isActiveUser(
-                                    account, command instanceof IRequiredUserValidationCommand
-                                        && ((IRequiredUserValidationCommand)command).isRequire()
-                            )
-                        )
-                ) {
+                if (Boolean.TRUE.equals(
+                        !isActiveUser(
+                                account, command instanceof IRequiredUserValidationCommand
+                                        && ((IRequiredUserValidationCommand) command).isRequire()))) {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
                 }
 
@@ -212,7 +193,7 @@ public class BaseController {
 
     }
 
-    private ResponseEntity<?> handleBadRequest(BindingResult bindingResult){
+    private ResponseEntity<?> handleBadRequest(BindingResult bindingResult) {
         var errors = bindingResult.getFieldErrors();
 
         var errorRequests = new HashMap<String, String>();
@@ -223,14 +204,13 @@ public class BaseController {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new ResponseMessage("invalid data" , errorRequests));
+                .body(new ResponseMessage("invalid data", errorRequests));
     }
 
-    private <T> Boolean isActiveUser(AccountEntity account,boolean isRequiredUserValidation){
+    private <T> Boolean isActiveUser(AccountEntity account, boolean isRequiredUserValidation) {
 
-        if(!isRequiredUserValidation&& account.getActiveCompanyId() == null)
-        {
-            return  true;
+        if (!isRequiredUserValidation && account.getActiveCompanyId() == null) {
+            return true;
         }
 
         var companyUser = companyUserCacheService.get(account.getId(), account.getActiveCompanyId());

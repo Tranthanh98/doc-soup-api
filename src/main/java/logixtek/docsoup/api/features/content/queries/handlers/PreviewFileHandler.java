@@ -8,6 +8,7 @@ import logixtek.docsoup.api.infrastructure.repositories.FileRepository;
 import logixtek.docsoup.api.infrastructure.thirdparty.Impl.GoogleDriveService;
 import lombok.AllArgsConstructor;
 import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,36 +19,35 @@ import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
 @Component("PreviewFileHandler")
 @AllArgsConstructor
-public class PreviewFileHandler implements Command.Handler<PreviewFile, ResponseEntity<InputStreamResource>> {
+public class PreviewFileHandler implements Command.Handler<PreviewFile, ResponseEntity<ByteArrayResource>> {
 
     private final FileRepository fileRepository;
     private final DocumentRepository documentRepository;
     private final PermissionService permissionService;
     private final GoogleDriveService documentService;
+
     @Override
-    public ResponseEntity<InputStreamResource> handle(PreviewFile query) {
+    public ResponseEntity<ByteArrayResource> handle(PreviewFile query) {
 
         var item = fileRepository.findById(query.getId());
 
-        if(item.isPresent())
-        {
-            if(!permissionService.getOfFile(item.get(),query).canRead())
-            {
+        if (item.isPresent()) {
+            if (!permissionService.getOfFile(item.get(), query).canRead()) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
 
             var file = item.get();
 
-            var documentOption = documentRepository.findFirstByFileIdAndFileVersionAndRefIdIsNull(file.getId(), file.getVersion());
+            var documentOption = documentRepository.findFirstByFileIdAndFileVersionAndRefIdIsNull(file.getId(),
+                    file.getVersion());
 
-            if(!documentOption.isPresent()) {
-                return  ResponseEntity.notFound().build();
+            if (!documentOption.isPresent()) {
+                return ResponseEntity.notFound().build();
             }
 
-            try{
+            try {
                 var outputStream = OutputStream.nullOutputStream();
 
                 documentService
@@ -57,7 +57,7 @@ public class PreviewFileHandler implements Command.Handler<PreviewFile, Response
 
                 IOUtils.copy(inputStream, outputStream);
 
-                var resource = new InputStreamResource(inputStream);
+                var resource = new ByteArrayResource(inputStream.readAllBytes());
 
                 var headers = new HttpHeaders();
                 headers.set("Content-Disposition", String.format("attachment; filename=download-%s", file.getName()));
@@ -67,8 +67,7 @@ public class PreviewFileHandler implements Command.Handler<PreviewFile, Response
                         .contentType(MediaType.valueOf("application/pdf"))
                         .body(resource);
 
-            }
-            catch (Exception exception){
+            } catch (Exception exception) {
                 return ResponseEntity.internalServerError().build();
             }
 
