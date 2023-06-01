@@ -32,7 +32,6 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Primary
 public class GoogleDriveService implements DocumentService, DocumentViewService {
     private final Drive googleDriveService;
 
