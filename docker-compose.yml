@@ -1,27 +1,26 @@
 version: "3"
 
 services:
-  # mssql-local-db:
-  #   image: "mcr.microsoft.com/azure-sql-edge:latest"
-  #   container_name: "azure-sql-edge-internal"
-  #   volumes:
-  #     - ./.docker/mssql/data/:/var/opt/mssql/data
-  #     - ./.docker/mssql/secrets/:/var/opt/mssql/secrets
+  mssql-local-db:
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    container_name: "azure-sql-edge-internal"
+    volumes:
+      - ./.docker/mssql/data/:/var/opt/mssql/data
+      - ./.docker/mssql/secrets/:/var/opt/mssql/secrets
 
-  #   environment:
-  #     ACCEPT_EULA: "y"
-  #     MSSQL_SA_PASSWORD: "yourStrong(!)Password"
-  #   ports:
-  #     - 1433:1433
-  #   networks:
-  #     - my_app
+    environment:
+      ACCEPT_EULA: "y"
+      MSSQL_SA_PASSWORD: "yourStrong(!)Password"
+    ports:
+      - 1433:1433
+    networks:
+      - my_app
 
   app:
     build: .
     image: doc-share-api
     ports:
       - 9000:9000
-      - 1400:1433
     networks:
       - my_app
 
